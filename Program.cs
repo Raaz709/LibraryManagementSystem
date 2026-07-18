@@ -1,3 +1,5 @@
+using LibraryManagementSystem.Interfaces;
+using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<DapperContext>();
+
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
 
