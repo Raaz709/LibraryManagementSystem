@@ -24,5 +24,29 @@ namespace LibraryManagementSystem.Repositories
 
             return books;
         }
+
+        public Book? GetBookById(int id)
+        {
+            using var connection = _context.CreateConnection();
+
+            string sql = "SELECT * FROM Books WHERE Id = @Id";
+
+            var book = connection.QueryFirstOrDefault<Book>(sql, new { Id = id });
+
+            return book;
+        }
+
+        public void AddBook(Book book)
+        {
+            using var connection = _context.CreateConnection();
+
+            string sql = @"INSERT INTO Books
+                   (Title, Author, Category, Quantity)
+                   VALUES
+                   (@Title, @Author, @Category, @Quantity)";
+
+            connection.Execute(sql, book);
+
+        }
     }
 }
