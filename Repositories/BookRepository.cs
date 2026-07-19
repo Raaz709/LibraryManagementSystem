@@ -63,5 +63,14 @@ namespace LibraryManagementSystem.Repositories
             connection.Execute(sql, book);
         }
 
+        public void DeleteBook(int id)
+        {
+            using var connection = _context.CreateConnection();
+
+            string sql = "DELETE FROM Books WHERE Id = @Id";
+
+            connection.Execute(sql, new { Id = id });
+        }
+
     }
 }

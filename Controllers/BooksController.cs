@@ -57,5 +57,21 @@ namespace LibraryManagementSystem.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBook(int id)
+        {
+            var book = _bookRepository.GetBookById(id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            _bookRepository.DeleteBook(id);
+
+            return Ok("Book deleted successfully.");
+
+        }
+
     }
 }
