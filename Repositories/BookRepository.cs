@@ -48,5 +48,20 @@ namespace LibraryManagementSystem.Repositories
             connection.Execute(sql, book);
 
         }
+
+        public void UpdateBook(Book book)
+        {
+            using var connection = _context.CreateConnection();
+
+            string sql = @"UPDATE Books
+                   SET Title = @Title,
+                       Author = @Author,
+                       Category = @Category,
+                       Quantity = @Quantity
+                   WHERE Id = @Id";
+
+            connection.Execute(sql, book);
+        }
+
     }
 }

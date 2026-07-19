@@ -43,5 +43,19 @@ namespace LibraryManagementSystem.Controllers
 
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateBook(int id, Book book)
+        {
+            if (id != book.Id)
+            {
+                return BadRequest("ID in URL and request body must match.");
+            }
+
+            _bookRepository.UpdateBook(book);
+
+            return Ok("Book updated successfully.");
+
+        }
+
     }
 }
