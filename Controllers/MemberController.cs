@@ -35,5 +35,13 @@ namespace LibraryManagementSystem.Controllers
 
             return Ok(member);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddMember(Member member)
+        {
+            var result = await _memberRepository.AddMember(member);
+
+            return Ok(result);
+        }
     }
 }
