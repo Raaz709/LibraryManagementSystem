@@ -22,5 +22,18 @@ namespace LibraryManagementSystem.Controllers
 
             return Ok(members);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMemberById(int id)
+        {
+            var member = await _memberRepository.GetMemberById(id);
+
+            if (member == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(member);
+        }
     }
 }
