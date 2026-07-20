@@ -43,5 +43,18 @@ namespace LibraryManagementSystem.Controllers
 
             return Ok(result);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMember(int id, Member member)
+        {
+            if (id != member.Id)
+            {
+                return BadRequest();
+            }
+
+            var result = await _memberRepository.UpdateMember(member);
+
+            return Ok(result);
+        }
     }
 }
