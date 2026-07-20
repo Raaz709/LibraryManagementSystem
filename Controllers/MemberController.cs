@@ -56,5 +56,13 @@ namespace LibraryManagementSystem.Controllers
 
             return Ok(result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMember(int id)
+        {
+            var result = await _memberRepository.DeleteMember(id);
+
+            return Ok(result);
+        }
     }
 }
